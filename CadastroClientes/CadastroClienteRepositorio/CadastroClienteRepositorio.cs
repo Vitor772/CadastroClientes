@@ -22,6 +22,18 @@ namespace CadastroClientes.Repositorio.CadastroClienteRepositorio
             return cadastroCliente;
         }
 
+        public bool Apagar(int id)
+        {
+            CadastroClienteModel cadastroClienteDB = ListarPorId(id);
+
+            if (cadastroClienteDB == null) throw new System.Exception("Houve um erro na atualização");
+
+            _bancoContext.CadastroClientes.Remove(cadastroClienteDB);
+            _bancoContext.SaveChanges();
+
+            return true;
+        }
+
         public CadastroClienteModel Atualizar(CadastroClienteModel cadastroCliente)
         {
             CadastroClienteModel cadastroClienteDB = ListarPorId(cadastroCliente.Id);
@@ -47,5 +59,7 @@ namespace CadastroClientes.Repositorio.CadastroClienteRepositorio
         {
             return _bancoContext.CadastroClientes.FirstOrDefault(x => x.Id == id);
         }
+
+
     }
 }

@@ -9,5 +9,6 @@ namespace CadastroClientes.Repositorio.CadastroClienteRepositorio
         List<CadastroClienteModel> BuscarPorTodos();
         CadastroClienteModel Adicionar(CadastroClienteModel cadastroCliente);
         CadastroClienteModel Atualizar(CadastroClienteModel cadastroCliente);
+        bool Apagar(int id);
     }
 }

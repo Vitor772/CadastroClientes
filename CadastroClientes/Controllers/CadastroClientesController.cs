@@ -40,5 +40,25 @@ namespace CadastroClientes.Controllers
             return View(cadastroCliente);
         
         }
+        public IActionResult Apagar(int id)
+        {
+            _cadastroClienteRepositorio.Apagar(id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ApagarConfirmacao(int id)
+        {
+            CadastroClienteModel cadastroCliente = _cadastroClienteRepositorio.ListarPorId(id);
+            return View(cadastroCliente);
+        }
+
+
+        [HttpPost]
+        public IActionResult Alterar(CadastroClienteModel cadastroCliente)
+        {
+             _cadastroClienteRepositorio.Atualizar(cadastroCliente);
+             return RedirectToAction("Index");
+            
+        }
     }
 }
